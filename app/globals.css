@@ -1,18 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@100..900&family=Stack+Sans+Headline:wght@200..700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Custom Colors */
+  --color-ss-dark-blue: #0C1B33;
+  --color-ss-black: #030A11;
+  --color-ss-dark-gray: #303436;
+  --color-ss-light-gray: #E5E7EB;
+  --color-ss-pale-blue: #E5FCFF;
+  --color-ss-white: #FCFFFF;
+
+  /* Custom Fonts */
+  --font-family-stack-sans-headline: 'Stack Sans Headline', system-ui, sans-serif;
+  --font-family-bricolage-grotesque: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-family-outfit: 'Outfit', system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -23,4 +27,156 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+:root {
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light; /* dark; */
+  /* color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, button {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+}
+
+p, a, span, li, label {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+a {
+  font-weight: 500;
+  /* color: #646cff; */
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #666;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+
+button {
+  cursor: pointer
+}
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+  pointer-events: none;
+  max-width: 400px;
+}
+
+.toast {
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  /* font-family: "Afacad Flux", sans-serif; */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out, fadeOut 0.5s ease-in 2.5s;
+}
+
+/* Toast types */
+.toast-success {
+  background-color: #4caf50;
+}
+
+.toast-error {
+  background-color: #f44336;
+}
+
+.toast-info {
+  background-color: #2196f3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+
+.fade-in-down {
+  animation: fadeInDownAnimation 1s ease-in-out;
+}
+
+.fade-in {
+  animation: fadeInAnimation 1s ease-in-out;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDownAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUpAnimation 1s ease-in-out;
+}
+
+@keyframes fadeInUpAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
 }
