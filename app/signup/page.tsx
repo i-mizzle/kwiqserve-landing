@@ -222,7 +222,7 @@ const Signup: React.FC = () => {
   return (
     <section className='w-full min-h-screen h-inherit bg-ss-pale-blue'>
       <div className='w-full flex items-start justify-between gap-x-5 relative'>
-        <div className='w-1/3 py-10 px-14 relative h-screen'>
+        <div className='w-1/3 py-10 px-14 relative h-screen hidden xl:block'>
           <Logo />
 
           <div className='mt-20'>
@@ -238,8 +238,11 @@ const Signup: React.FC = () => {
           <div className='w-[95%] absolute bottom-0 z-1 -right-[5%] h-125 bg-white rounded-lg' />
         </div>
 
-        <div className='w-2/3 bg-white rounded-lg z-990 p-5 shadow-xl shadow-ss-black/10 min-h-screen h-inherit'>
-          {!signedUp && <div className='w-1/2 mx-auto mt-12'>
+        <div className='w-full xl:w-2/3 bg-white rounded-lg z-990 p-5 shadow-xl shadow-ss-black/10 min-h-screen h-inherit'>
+          <div className='xl:hidden'>
+            <Logo />
+          </div>
+          {!signedUp && <div className='w-[88%] xl:w-1/2 mx-auto mt-12'>
             <h3 className='font-bold text-2xl text-ss-dark-blue mb-1'>
               Create an account for your business
             </h3>
@@ -431,10 +434,10 @@ const Signup: React.FC = () => {
 
 
             <div className='mt-5 pt-5 border-t border-gray-300 flex items-center justify-between gap-x-4 w-full'>
-              <button onClick={()=>{setActiveStep(1)}} className='w-1/3 cursor-pointer flex items-center justify-center gap-x-2 text-ss-dark-gray text-sm'>
+              {activeStep > 1 && <button onClick={()=>{setActiveStep(1)}} className='w-1/3 cursor-pointer flex items-center justify-center gap-x-2 text-ss-dark-gray text-sm'>
                 <ArrowIcon className={`w-4 h-4 -rotate-180`} />
                 Previous Step
-              </button>
+              </button>}
               <div className='w-full'>
                 <FormButton 
                   buttonAction={()=>{proceed()}} 
